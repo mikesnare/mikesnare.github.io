@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tests images by reloading an iframe multiple times.</title>
+  <link rel="stylesheet" type="text/css" href="style/all.css">
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="js/all.js"></script>
+</head>
+<body>
+
+<div class="title">Tests images by reloading an iframe multiple times.</div>
+
+<form>
+
+  <div>
+    Choose a template:
+    <select name="template">
+      <option value="s3-hosted-images.html">Bublup S3</option>
+      <option value="cdn-hosted-images.html">Bublup S3 with CDN</option>
+      <option value="fb-hosted-images.html">Large Facebook Images</option>
+      <option value="fb-mobile-hosted-images.html">Medium Facebook Images</option>
+      <option value="fb-smaller-hosted-images.html">Small Facebook Images</option>
+    </select> Size in MB: <span id="sizeIndicator"></span>
+  </div>
+
+  <div>
+    How many iterations?
+    <input id="iterations" type="number" max="50" min="1" value="1">
+  </div>
+
+  <div>
+    <input type="submit" value="Run Test">
+  </div>
+
+</form>
+
+<div class="outer-results">
+  <div>
+    Iterations completed: <span id="iterationsCompleted"></span>
+  </div>
+  <div>
+    Total Time: <span id="totalTime"></span>
+  </div>
+  <div>
+    Average Time: <span id="averageTime"></span>
+  </div>
+  <div>
+    Average Kbps: <span id="averageKbps"></span>
+  </div>
+</div>
+
+<iframe></iframe>
+
+<div class="image-container"></div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+
+    var $form = $('form'),
+      expectedIterations = 0,
+      src = '',
+      size = 0,
+      totalIterations = 0,
+      totalTime = 0,
+      averageTime = 0;
+
+    window.addEventListener("message", function (event) {
+      if (event && event.data) {
+        var data = JSON.parse(event.data);
+        totalTime += data.time;
+        averageTime = totalTime / ++totalIterations;
+        update();
+        if (totalIterations < expectedIterations) {
+          runTest();
+        }
+      }
+    }, false);
+
+    function update() {
+      $('#iterationsCompleted').text(totalIterations);
+      $('#totalTime').text(totalTime);
+      $('#averageTime').text(averageTime);
+      $('#averageKbps').text(size * 1000 * 8000 / averageTime);
+    }
+
+    function runTest() {
+      console.log('Running test #', totalIterations + 1);
+      $('iframe').attr('src', src);
+    }
+
+    $form.submit(function (event) {
+      console.log('submitting');
+      totalIterations = 0;
+      totalTime = 0;
+      averageTime = 0;
+      update();
+      src = $('select').val();
+      console.log(src);
+      expectedIterations = $('#iterations').val();
+      event && event.stopPropagation && event.stopPropagation();
+      event && event.preventDefault && event.preventDefault();
+      runTest();
+    });
+
+    var $select = $('select');
+    function updateSize() {
+      size = 'unknown';
+      switch ($select.val()) {
+        case 's3-hosted-images.html':
+        case 'cdn-hosted-images.html':
+          size = 1.532299;
+          break;
+        case 'fb-hosted-images.html':
+          size = 4.755430;
+          break;
+        case 'fb-mobile-hosted-images.html':
+          size = 2.798618;
+          break;
+        case 'fb-smaller-hosted-images.html':
+          size = 0.774344;
+          break;
+      }
+      $('#sizeIndicator').text(size);
+    }
+
+
+    $select.change(updateSize);
+    updateSize();
+
+  });
+</script>
+
+</body>
+</html>

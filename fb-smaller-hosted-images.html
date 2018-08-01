@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>These images are hosted on facebook.</title>
+  <link rel="stylesheet" type="text/css" href="style/all.css">
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="js/all.js"></script>
+</head>
+<body>
+
+<div class="title">These images are hosted on Facebook.</div>
+
+<div class="results">Gathering data...</div>
+
+<div class="image-container"></div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+
+    // jQuery methods go here...
+    var arr = [
+      // leaves
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/p526x296/38085314_296876944397309_4817233008501194752_o.jpg?_nc_cat=0&oh=bd71a19e52c3482d666a0a95473d1725&oe=5C03B3F2',
+      // trolley
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/p526x296/38085777_296865741065096_1590482572175998976_o.jpg?_nc_cat=0&oh=87964c447936cee5a37c483929662fca&oe=5BCBC7E7',
+      // hurricane
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/s720x720/38068062_296863501065320_2001642033395007488_o.jpg?_nc_cat=0&oh=1e40fa6f7afe257a2a1aa5c518a77e45&oe=5BD4F1C7',
+      // girl
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/q82/p526x296/38012384_296870434397960_1064838949500878848_o.jpg?_nc_cat=0&oh=c5ff36c15a635b93efa022fbf052d199&oe=5C0E2B9B',
+      // car
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/p526x296/38003720_296877557730581_2360776066131296256_o.jpg?_nc_cat=0&oh=6e455c417921f26070a75ab58b1d99c9&oe=5C0D16CB',
+      // bear
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/p526x296/37969529_296865891065081_1969785341837574144_o.jpg?_nc_cat=0&oh=eec9d9e3a0b46d65c37d6dccafcbce4b&oe=5BCA5182',
+      // galaxy
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/q92/p526x296/38009416_296876697730667_7905343682922938368_n.jpg?_nc_cat=0&oh=213d3daf8bedef81c86a47abf692f769&oe=5C09FA52',
+      // stairs
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/p526x296/38005055_296864557731881_79266039514267648_o.jpg?_nc_cat=0&oh=dbdb399862516eaf09a5b1534ce26ecd&oe=5C05DE77',
+      // lantern
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/p526x296/38036869_296865491065121_5018541501509009408_o.jpg?_nc_cat=0&oh=fa89891618def7baca99297fd94aca2d&oe=5BC5B47E',
+      // smoke
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/p526x296/38071761_296871187731218_8809098599792115712_o.jpg?_nc_cat=0&oh=f335d3735aff78494cb80d2fa2574f42&oe=5BD14BFE',
+      // building
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/p526x296/38008785_296872067731130_8968255618037055488_o.jpg?_nc_cat=0&oh=96d8eb9263ea31aaf37b385978021273&oe=5BC6E894',
+      // wolf
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/p526x296/38195044_296870661064604_6152255031899848704_o.jpg?_nc_cat=0&oh=02efa6ba35fd2d886a5b81a116ee61bb&oe=5C10DD2A',
+      // framework
+      'https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-0/s526x296/38025299_296864201065250_2772410907215527936_n.jpg?_nc_cat=0&oh=cf2f3385b7a88ee9573007a9060f5317&oe=5BCC895D'
+    ];
+
+    appendImages(arr);
+
+  });
+</script>
+
+</body>
+</html>

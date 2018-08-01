@@ -12,6 +12,10 @@ div.title, div.results {
   height: 22px;
 }
 
+div.outer-results {
+  height: initial;
+}
+
 div.image-container {
   margin-left: auto;
   margin-right: auto;
@@ -25,4 +29,9 @@ img {
   width: 100%;
   width: 550px;
   margin-bottom: 20px;
+}
+
+iframe {
+  width: 100%;
+  height: 500px;
 }
