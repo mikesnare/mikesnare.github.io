@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example of bad file input behavior.</title>
+</head>
+<body>
+
+<form>
+  <input type="file" id="fileSelect" accept="image/*,video/*,video/mp4,video/x-m4v,video/x-flv">
+</form>
+
+<script>
+  var fileSelect = document.getElementById('fileSelect');
+  fileSelect.addEventListener('change', function() {
+    fileSelect.value = '';
+  })
+</script>
+
+</body>
+</html>
