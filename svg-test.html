@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SVG Test</title>
+
+  <style>
+
+    .carousel {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      height: 144px;
+    }
+
+    .carousel__panel {
+      max-width: 50vw;
+      max-height: 100%;
+      margin: 0px 24px;
+    }
+
+    .carousel__panel-item {
+      height: 126px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .carousel__panel-item-image {
+      background-color: orange;
+      max-height: 126px!important;
+      display: block;
+      height: auto;
+      width: auto;
+      align-self: center;
+    }
+
+  </style>
+
+</head>
+<body>
+
+<div class="carousel">
+  <div class="carousel__panel">
+    <div class="carousel__panel-item ">
+      <img class="carousel__panel-item-image"
+           src="http://static1.squarespace.com/static/51509569e4b0cdd186de0b85/t/5ab92a8588251b9c242e01ca/1522084491811/PUSH+Band+2.0.jpg?format=1000w">
+    </div>
+  </div>
+
+  <div class="carousel__panel">
+    <div class="carousel__panel-item ">
+      <img class="carousel__panel-item-image"
+           src="https://www.thesaurus.com/assets/Thesaurus_Logo_white-e52239ea6d6b353291a395b18c0e11e9.svg">
+    </div>
+  </div>
+
+  <div class="carousel__panel">
+    <div class="carousel__panel-item ">
+      <img class="carousel__panel-item-image"
+           src="http://static1.squarespace.com/static/51509569e4b0cdd186de0b85/t/5ab92a8588251b9c242e01ca/1522084491811/PUSH+Band+2.0.jpg?format=1000w">
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
