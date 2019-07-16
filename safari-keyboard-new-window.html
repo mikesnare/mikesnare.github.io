@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>This window will close soon.</title>
+</head>
+<body>
+
+Closing in <span id="counter"></span>...
+
+<script>
+  var time = 3;
+
+  function updateCounter() {
+    document.getElementById('counter').innerText = time--;
+    if (time < 0) {
+      clearInterval(interval);
+    }
+  }
+
+  var interval = setInterval(updateCounter, 1000);
+
+  setTimeout(function () {
+    console.log('posting');
+    window.opener.postMessage('whatever', window.location.origin);
+  }, time * 1000);
+
+  updateCounter();
+</script>
+
+</body>
+</html>

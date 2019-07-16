@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example of bad safari keyboard behavior.</title>
+</head>
+<body>
+
+<form>
+  <div>
+    <input type="text" placeholder="focus me after you come back" style="width: 250px; height: 32px; padding-left: 10px; padding-right: 10px;">
+  </div>
+
+  <button id="button" style="margin-top: 20px; height: 30px;">Click to open a new window.</button>
+</form>
+
+<script>
+  document.getElementById('button').addEventListener('click', function(e) {
+    e.preventDefault();
+    var otherWindow = window.open('./safari-keyboard-new-window.html');
+    console.dir(otherWindow);
+
+    window.addEventListener('message', (event) => {
+      console.log(`Received message: ${event.data}`);
+      otherWindow.close();
+    });
+  });
+
+
+</script>
+
+</body>
+</html>
