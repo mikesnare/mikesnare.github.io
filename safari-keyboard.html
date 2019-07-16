@@ -18,15 +18,10 @@
   document.getElementById('button').addEventListener('click', function(e) {
     e.preventDefault();
     var otherWindow = window.open('./safari-keyboard-new-window.html');
-    console.dir(otherWindow);
-
     window.addEventListener('message', (event) => {
-      console.log(`Received message: ${event.data}`);
       otherWindow.close();
     });
   });
-
-
 </script>
 
 </body>
