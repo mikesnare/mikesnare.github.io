@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example of bad safari keyboard behavior with facebook.</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+<form>
+  <div>
+    <input type="text" placeholder="focus me after you come back"
+           style="width: 250px; height: 32px; padding-left: 10px; padding-right: 10px;">
+  </div>
+
+  <button id="button" style="margin-top: 20px; height: 30px;">Click to open facebook window.</button>
+</form>
+
+<script>
+  $.ajaxSetup({cache: true});
+  $.getScript('//connect.facebook.net/en_US/sdk.js', function () {
+    FB.init({
+      appId: "245376788841431",
+      version: 'v2.6'
+    });
+  });
+
+  $('#button').click(function (e) {
+    e.preventDefault();
+    FB.login(function (facebookUser) {
+      console.dir(facebookUser);
+      var f_response = facebookUser.authResponse;
+      if (f_response) {
+        // Checking permissions
+        if (f_response.grantedScopes.includes("email")) {
+          var userInfo = {provider: 'facebook', access_token: f_response.accessToken};
+          console.log('Login successful!');
+        } else {
+          alert('try again.  We need email access');
+        }
+      } else {
+        console.log("User did not login successfully");
+      }
+    }, {scope: 'email', return_scopes: true, auth_type: 'rerequest'});
+  });
+</script>
+
+</body>
+</html>
