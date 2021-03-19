@@ -1,0 +1,68 @@
+<html>
+<head>
+  <title>Videos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 1000px
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 48px;
+    }
+
+    .wrapper {
+      position: fixed;
+      top: 48px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      width: 100%;
+      height: calc(100% - 48px);
+
+      background-color: black;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .wrapper .close, .wrapper .controls {
+      color: white;
+      height: 30px;
+      line-height: 30px;
+      padding-right: 10px;
+    }
+
+    .wrapper .video {
+      flex-grow: 1;
+      background-color: green;
+      width: 100%;
+    }
+
+    .wrapper .video video {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">This is the header</div>
+<div class="wrapper">
+  <span class="close">Close it</span>
+  <div class="video">
+    <video height="100%" width="100%" controls
+           src="https://s3.amazonaws.com/bublup-videocowboy-staging/007-imd-137f3a79-7000-4f10-9050-dd23f528f995/1605823771_720.mp4"></video>
+  </div>
+  <div class="controls">These are the controls</div>
+</div>
+
+</body>
+</html>
